@@ -140,3 +140,23 @@
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-500;
 }
+
+/* Added subtle fade-in animations for About section */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+  animation: fadeIn 0.8s ease-out 0.2s forwards;
+}

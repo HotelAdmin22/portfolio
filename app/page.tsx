@@ -374,57 +374,60 @@ export default function DesignerPortfolio() {
           </section>
 
           {/* About Section */}
-          <section id="about" className="py-20 sm:py-24 bg-white">
-            <div className="container mx-auto max-w-6xl px-4 sm:px-6 space-y-16">
+          <section id="about" className="py-24 sm:py-28 bg-white">
+            <div className="container mx-auto max-w-7xl px-4 sm:px-6 space-y-32 sm:space-y-36">
               {/* Row 1: What I Do - Image Left, Text Right */}
-              <div className="grid md:grid-cols-2 gap-8 lg:gap-10 items-center">
+              <div className="grid md:grid-cols-2 gap-12 sm:gap-16 items-center">
                 {/* Left: Portrait */}
                 <div className="flex justify-center md:justify-end">
-                  <Avatar className="w-64 h-64 sm:w-72 sm:h-72 border-2 border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                  <Avatar className="w-[240px] h-[240px] sm:w-[260px] sm:h-[260px] border-0 shadow-[0_6px_20px_rgba(0,0,0,0.06)] transition-all duration-700 opacity-0 animate-fade-in">
                     <AvatarImage src="/images/glaboy-headshot-1.jpg" alt="Designer portrait" />
                     <AvatarFallback>GL</AvatarFallback>
                   </Avatar>
                 </div>
 
                 {/* Right: Text Content */}
-                <div className="flex flex-col justify-center">
-                  <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-5 text-gray-900">What I do</h2>
-                  <div className="space-y-4 text-gray-700 leading-relaxed">
+                <div className="flex flex-col justify-center transition-all duration-700 opacity-0 animate-fade-in-delay">
+                  <h2 className="text-[36px] sm:text-[40px] font-bold tracking-tight mb-5 text-gray-900">What I Do</h2>
+                  <div className="space-y-5 text-gray-700 text-[15px] sm:text-[16px] leading-relaxed max-w-[600px]">
                     <p>
-                      I create technical visualizations that transform complex engineering concepts into compelling,
-                      precise imagery. With over 8 years of experience, I specialize in delivering high-fidelity renders
-                      for aerospace and industrial clients who demand both accuracy and visual impact.
+                      I create high-fidelity technical visualizations that transform complex engineering concepts into
+                      clear, compelling imagery. With 8+ years of experience, I specialize in producing photorealistic
+                      renders for aerospace and industrial clients who require both technical accuracy and strong visual
+                      impact.
                     </p>
                     <p>
-                      My work bridges engineering and design—turning CAD models and technical specifications into
-                      photorealistic renderings for documentation, presentations, and public outreach. Each project
-                      meets the exacting standards of organizations like NASA while maintaining design excellence.
+                      My work bridges engineering and design—turning CAD data and technical specifications into visuals
+                      used for documentation, stakeholder presentations, marketing materials, and public outreach. Every
+                      project meets the rigorous standards of organizations like NASA while maintaining a polished,
+                      modern design aesthetic.
                     </p>
                   </div>
                 </div>
               </div>
 
               {/* Row 2: Who I Am - Text Left, Image Right */}
-              <div className="grid md:grid-cols-2 gap-8 lg:gap-10 items-center">
+              <div className="grid md:grid-cols-2 gap-12 sm:gap-16 items-center">
                 {/* Left: Text Content */}
-                <div className="flex flex-col justify-center order-2 md:order-1">
-                  <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-5 text-gray-900">Who I am</h2>
-                  <div className="space-y-4 text-gray-700 leading-relaxed">
+                <div className="flex flex-col justify-center order-2 md:order-1 transition-all duration-700 opacity-0 animate-fade-in-delay">
+                  <h2 className="text-[36px] sm:text-[40px] font-bold tracking-tight mb-5 text-gray-900">Who I Am</h2>
+                  <div className="space-y-5 text-gray-700 text-[15px] sm:text-[16px] leading-relaxed max-w-[600px]">
                     <p>
                       I'm a detail-oriented technical visualization specialist passionate about making complex
-                      engineering accessible through design. My approach pairs technical precision with creative
+                      engineering accessible through design. My approach blends technical precision with creative
                       problem-solving to produce visuals that inform, persuade, and inspire.
                     </p>
                     <p>
-                      When I'm not creating renders for aerospace contractors or developing technical documentation,
-                      you'll find me with my creative companion, Cherry—a chihuahua who keeps me inspired and grounded.
+                      When I'm not creating renders or refining technical documentation, you'll find me with my creative
+                      companion, Cherry—a chihuahua who keeps me inspired, grounded, and entertained throughout the
+                      design process.
                     </p>
                   </div>
                 </div>
 
                 {/* Right: Cherry Photo */}
                 <div className="flex justify-center md:justify-start order-1 md:order-2">
-                  <Avatar className="w-64 h-64 sm:w-72 sm:h-72 border-2 border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                  <Avatar className="w-[240px] h-[240px] sm:w-[260px] sm:h-[260px] border-0 shadow-[0_6px_20px_rgba(0,0,0,0.06)] transition-all duration-700 opacity-0 animate-fade-in">
                     <AvatarImage src="/images/cherry-headshot.jpg" alt="Cherry the chihuahua" />
                     <AvatarFallback>🐕</AvatarFallback>
                   </Avatar>
