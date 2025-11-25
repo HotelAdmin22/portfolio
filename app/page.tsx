@@ -272,7 +272,7 @@ export default function DesignerPortfolio() {
         </header>
 
         <main className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
-          <section className="text-center my-3 sm:my-32 px-2 sm:px-0 safe-top">
+          <section className="text-center my-8 mb-12 sm:my-32 px-2 sm:px-0 safe-top">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tighter max-w-[90%] sm:max-w-none mx-auto">
               Precision in Design,
               <br />
