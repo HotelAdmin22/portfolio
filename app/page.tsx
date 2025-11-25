@@ -436,6 +436,9 @@ export default function DesignerPortfolio() {
             </div>
           </section>
 
+          {/* Mobile-only divider between About and Contact sections */}
+          <div className="block md:hidden border-t border-gray-200 mx-6 my-16"></div>
+
           <section id="contact" className="mt-20 sm:mt-28 mb-12 sm:mb-16 text-center">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Let's Create Together</h2>
             <p className="max-w-xl mx-auto text-gray-600 mb-12">
