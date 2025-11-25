@@ -3,7 +3,6 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { ProjectModal, type PortfolioItem } from "@/components/project-modal"
 import { ContactForm } from "@/components/contact-form"
@@ -373,25 +372,122 @@ export default function DesignerPortfolio() {
             </div>
           </section>
 
+          {/* Creative Services Section */}
+          <section className="pt-8 pb-8 sm:pt-24 sm:pb-28 md:pt-28 md:pb-32">
+            <div className="container mx-auto max-w-6xl px-5 sm:px-6">
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-10 sm:mb-14 text-center text-gray-900">
+                Creative Services
+              </h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 md:gap-8 justify-items-center">
+                {/* Card 1 - Product Renderings & Design */}
+                <div className="bg-white rounded-lg p-7 sm:p-8 w-full max-w-sm shadow-[0_2px_12px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300">
+                  <div className="mb-4 text-red-500">
+                    <svg
+                      className="w-8 h-8"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3 text-gray-900">Product Renderings & Design</h3>
+                  <p className="text-gray-700 text-base leading-relaxed">
+                    Photorealistic marketing visuals, product visualization, and high-quality content creation for
+                    industrial, aerospace, and consumer products.
+                  </p>
+                </div>
+
+                {/* Card 2 - Scientific Visualization */}
+                <div className="bg-white rounded-lg p-7 sm:p-8 w-full max-w-sm shadow-[0_2px_12px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300">
+                  <div className="mb-4 text-red-500">
+                    <svg
+                      className="w-8 h-8"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3 text-gray-900">Scientific Visualization</h3>
+                  <p className="text-gray-700 text-base leading-relaxed">
+                    Data-driven visuals, 3D scanning interpretation, scientific communication, and digital twin
+                    representation.
+                  </p>
+                </div>
+
+                {/* Card 3 - Immersive Technologies */}
+                <div className="bg-white rounded-lg p-7 sm:p-8 w-full max-w-sm shadow-[0_2px_12px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300">
+                  <div className="mb-4 text-red-500">
+                    <svg
+                      className="w-8 h-8"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3 text-gray-900">
+                    Immersive Technologies (AR/VR/XR)
+                  </h3>
+                  <p className="text-gray-700 text-base leading-relaxed">
+                    Interactive immersive experiences for training, simulation, and education, leveraging AR, VR, and XR
+                    technologies.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* About Section */}
-          <section id="about" className="py-16 sm:py-28 bg-white">
-            <div className="container mx-auto max-w-7xl px-5 sm:px-6 space-y-20 sm:space-y-36">
+          <section id="about" className="pt-8 pb-8 sm:py-28 md:py-32 bg-white">
+            <div className="container mx-auto max-w-6xl px-5 sm:px-6 space-y-8 sm:space-y-12">
               {/* Row 1: What I Do - Image Left, Text Right */}
-              <div className="grid md:grid-cols-2 gap-8 sm:gap-16 items-center">
-                {/* Left: Portrait */}
-                <div className="flex justify-center md:justify-end mb-6 sm:mb-0">
-                  <Avatar className="w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] border-0 shadow-[0_6px_20px_rgba(0,0,0,0.06)] transition-all duration-700 opacity-0 animate-fade-in">
-                    <AvatarImage src="/images/glaboy-headshot-1.jpg" alt="Designer portrait" />
-                    <AvatarFallback>GL</AvatarFallback>
-                  </Avatar>
+              <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
+                {/* Left: Portrait as rectangular card */}
+                <div className="flex justify-center md:justify-end transition-all duration-700 opacity-0 animate-fade-in">
+                  <div className="overflow-hidden rounded-lg shadow-[0_2px_12px_rgba(0,0,0,0.06)] w-full max-w-sm">
+                    <Image
+                      src="/images/glaboy-headshot-1.jpg"
+                      alt="Designer portrait"
+                      width={400}
+                      height={400}
+                      className="aspect-square object-cover w-full"
+                    />
+                  </div>
                 </div>
 
                 {/* Right: Text Content */}
                 <div className="flex flex-col justify-center transition-all duration-700 opacity-0 animate-fade-in-delay">
-                  <h2 className="text-[32px] sm:text-[40px] font-bold tracking-tight mb-3 sm:mb-5 text-gray-900">
-                    What I Do
-                  </h2>
-                  <div className="space-y-4 sm:space-y-5 text-gray-700 text-[15px] sm:text-[16px] leading-[1.35] sm:leading-relaxed max-w-[600px]">
+                  <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-5 text-gray-900">What I Do</h2>
+                  <div className="space-y-4 text-gray-700 text-base leading-relaxed max-w-[600px]">
                     <p>
                       I create high-fidelity technical visualizations that transform complex engineering concepts into
                       clear, compelling imagery. With 8+ years of experience, I specialize in producing photorealistic
@@ -409,13 +505,11 @@ export default function DesignerPortfolio() {
               </div>
 
               {/* Row 2: Who I Am - Text Left, Image Right */}
-              <div className="grid md:grid-cols-2 gap-8 sm:gap-16 items-center">
+              <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
                 {/* Left: Text Content */}
                 <div className="flex flex-col justify-center order-2 md:order-1 transition-all duration-700 opacity-0 animate-fade-in-delay">
-                  <h2 className="text-[32px] sm:text-[40px] font-bold tracking-tight mb-3 sm:mb-5 text-gray-900">
-                    Who I Am
-                  </h2>
-                  <div className="space-y-4 sm:space-y-5 text-gray-700 text-[15px] sm:text-[16px] leading-[1.35] sm:leading-relaxed max-w-[600px]">
+                  <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-5 text-gray-900">Who I Am</h2>
+                  <div className="space-y-4 text-gray-700 text-base leading-relaxed max-w-[600px]">
                     <p>
                       I'm a detail-oriented technical visualization specialist passionate about making complex
                       engineering accessible through design. My approach blends technical precision with creative
@@ -429,22 +523,27 @@ export default function DesignerPortfolio() {
                   </div>
                 </div>
 
-                {/* Right: Cherry Photo */}
-                <div className="flex justify-center md:justify-start order-1 md:order-2 mb-6 sm:mb-0">
-                  <Avatar className="w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] border-0 shadow-[0_6px_20px_rgba(0,0,0,0.06)] transition-all duration-700 opacity-0 animate-fade-in">
-                    <AvatarImage src="/images/cherry-headshot.jpg" alt="Cherry the chihuahua" />
-                    <AvatarFallback>🐕</AvatarFallback>
-                  </Avatar>
+                {/* Right: Cherry Photo as rectangular card */}
+                <div className="flex justify-center md:justify-start order-1 md:order-2 transition-all duration-700 opacity-0 animate-fade-in">
+                  <div className="overflow-hidden rounded-lg shadow-[0_2px_12px_rgba(0,0,0,0.06)] w-full max-w-sm">
+                    <Image
+                      src="/images/cherry-headshot.jpg"
+                      alt="Cherry the chihuahua"
+                      width={400}
+                      height={400}
+                      className="aspect-square object-cover w-full"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </section>
 
           {/* Mobile-only divider between About and Contact sections */}
-          <div className="block md:hidden border-t border-gray-200 mx-6 my-10"></div>
+          <div className="md:hidden border-t border-gray-200 mx-8 my-0" />
 
           {/* Contact Section */}
-          <section id="contact" className="mt-12 sm:mt-28 mb-12 sm:mb-16 text-center">
+          <section id="contact" className="mt-8 sm:mt-28 mb-12 sm:mb-16 text-center">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Let's Create Together</h2>
             <p className="max-w-xl mx-auto text-gray-600 mb-10 sm:mb-12 px-4">
               Have a project in mind or just want to say hello? I'd love to hear from you.
