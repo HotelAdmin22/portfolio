@@ -273,7 +273,7 @@ export default function DesignerPortfolio() {
         </header>
 
         <main className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
-          <section className="text-center my-12 sm:my-20">
+          <section className="text-center my-20 sm:my-32">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tighter">
               Precision in Design,
               <br />
@@ -284,7 +284,7 @@ export default function DesignerPortfolio() {
             </p>
           </section>
 
-          <section id="portfolio" className="space-y-12 sm:space-y-16">
+          <section id="portfolio" className="space-y-12 sm:space-y-16 mb-16 sm:mb-20">
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4">Industrial & Aerospace</h2>
               <div className="relative">
@@ -373,48 +373,67 @@ export default function DesignerPortfolio() {
             </div>
           </section>
 
-          <section id="about" className="my-20 sm:my-32">
-            <div className="grid md:grid-cols-3 gap-8 sm:gap-12 items-center">
-              <div className="md:col-span-1">
-                <Avatar className="w-40 h-40 sm:w-48 sm:h-48 mx-auto md:mx-0 border-2 border-gray-200 shadow-lg">
-                  <AvatarImage src="/images/glaboy-headshot-1.jpg" alt="Designer headshot" />
-                  <AvatarFallback>GL</AvatarFallback>
-                </Avatar>
-              </div>
-              <div className="md:col-span-2 text-center md:text-left">
-                <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">About Me</h2>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  I'm a technical visualization specialist with over 8 years of experience creating precise,
-                  high-fidelity renders for the aerospace and industrial sectors. My work bridges the gap between
-                  complex engineering concepts and compelling visual communication, delivering renders that meet the
-                  exacting standards of organizations like NASA and leading aerospace contractors.
-                </p>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  I specialize in transforming CAD models and technical specifications into photorealistic
-                  visualizations for documentation, stakeholder presentations, and public outreach. My approach combines
-                  technical accuracy with design excellence to create renders that inform, persuade, and inspire.
-                </p>
-                <div className="mt-6">
-                  <p className="text-gray-700 leading-relaxed mb-3">
-                    When I'm not designing, you'll find me spending time with my creative companion, Cherry, who keeps
-                    me inspired and grounded.
-                  </p>
-                  <div className="inline-block">
-                    <Image
-                      src="/images/cherry-headshot.jpg"
-                      alt="Cherry the dog"
-                      width={200}
-                      height={200}
-                      className="rounded-lg shadow-md"
-                    />
-                    <p className="text-sm text-gray-500 mt-2 text-center">Cherry, my creative muse</p>
+          {/* About Section */}
+          <section id="about" className="py-20 sm:py-24 bg-white">
+            <div className="container mx-auto max-w-6xl px-4 sm:px-6 space-y-16">
+              {/* Row 1: What I Do - Image Left, Text Right */}
+              <div className="grid md:grid-cols-2 gap-8 lg:gap-10 items-center">
+                {/* Left: Portrait */}
+                <div className="flex justify-center md:justify-end">
+                  <Avatar className="w-64 h-64 sm:w-72 sm:h-72 border-2 border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                    <AvatarImage src="/images/glaboy-headshot-1.jpg" alt="Designer portrait" />
+                    <AvatarFallback>GL</AvatarFallback>
+                  </Avatar>
+                </div>
+
+                {/* Right: Text Content */}
+                <div className="flex flex-col justify-center">
+                  <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-5 text-gray-900">What I do</h2>
+                  <div className="space-y-4 text-gray-700 leading-relaxed">
+                    <p>
+                      I create technical visualizations that transform complex engineering concepts into compelling,
+                      precise imagery. With over 8 years of experience, I specialize in delivering high-fidelity renders
+                      for aerospace and industrial clients who demand both accuracy and visual impact.
+                    </p>
+                    <p>
+                      My work bridges engineering and design—turning CAD models and technical specifications into
+                      photorealistic renderings for documentation, presentations, and public outreach. Each project
+                      meets the exacting standards of organizations like NASA while maintaining design excellence.
+                    </p>
                   </div>
+                </div>
+              </div>
+
+              {/* Row 2: Who I Am - Text Left, Image Right */}
+              <div className="grid md:grid-cols-2 gap-8 lg:gap-10 items-center">
+                {/* Left: Text Content */}
+                <div className="flex flex-col justify-center order-2 md:order-1">
+                  <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-5 text-gray-900">Who I am</h2>
+                  <div className="space-y-4 text-gray-700 leading-relaxed">
+                    <p>
+                      I'm a detail-oriented technical visualization specialist passionate about making complex
+                      engineering accessible through design. My approach pairs technical precision with creative
+                      problem-solving to produce visuals that inform, persuade, and inspire.
+                    </p>
+                    <p>
+                      When I'm not creating renders for aerospace contractors or developing technical documentation,
+                      you'll find me with my creative companion, Cherry—a chihuahua who keeps me inspired and grounded.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right: Cherry Photo */}
+                <div className="flex justify-center md:justify-start order-1 md:order-2">
+                  <Avatar className="w-64 h-64 sm:w-72 sm:h-72 border-2 border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+                    <AvatarImage src="/images/cherry-headshot.jpg" alt="Cherry the chihuahua" />
+                    <AvatarFallback>🐕</AvatarFallback>
+                  </Avatar>
                 </div>
               </div>
             </div>
           </section>
 
-          <section id="contact" className="my-20 sm:my-32 text-center">
+          <section id="contact" className="mt-20 sm:mt-28 mb-12 sm:mb-16 text-center">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Let's Create Together</h2>
             <p className="max-w-xl mx-auto text-gray-600 mb-12">
               Have a project in mind or just want to say hello? I'd love to hear from you.
@@ -446,7 +465,7 @@ export default function DesignerPortfolio() {
 
         <ProjectModal project={selectedProject} isOpen={!!selectedProject} onClose={() => setSelectedProject(null)} />
 
-        <footer className="container mx-auto px-6 py-6 text-center text-gray-500">
+        <footer className="container mx-auto px-6 py-8 sm:py-12 text-center text-gray-500">
           <p>&copy; {new Date().getFullYear()} v0 creator. All Rights Reserved.</p>
         </footer>
       </div>
