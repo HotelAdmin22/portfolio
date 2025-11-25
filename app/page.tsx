@@ -273,8 +273,8 @@ export default function DesignerPortfolio() {
         </header>
 
         <main className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
-          <section className="text-center my-20 sm:my-32">
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tighter">
+          <section className="text-center my-12 sm:my-32 px-2 sm:px-0 safe-top">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tighter max-w-[90%] sm:max-w-none mx-auto">
               Precision in Design,
               <br />
               <span className="text-red-500">Innovation in Vision.</span>
@@ -374,13 +374,13 @@ export default function DesignerPortfolio() {
           </section>
 
           {/* About Section */}
-          <section id="about" className="py-24 sm:py-28 bg-white">
-            <div className="container mx-auto max-w-7xl px-4 sm:px-6 space-y-32 sm:space-y-36">
+          <section id="about" className="py-16 sm:py-28 bg-white">
+            <div className="container mx-auto max-w-7xl px-5 sm:px-6 space-y-20 sm:space-y-36">
               {/* Row 1: What I Do - Image Left, Text Right */}
-              <div className="grid md:grid-cols-2 gap-12 sm:gap-16 items-center">
+              <div className="grid md:grid-cols-2 gap-8 sm:gap-16 items-center">
                 {/* Left: Portrait */}
-                <div className="flex justify-center md:justify-end">
-                  <Avatar className="w-[240px] h-[240px] sm:w-[260px] sm:h-[260px] border-0 shadow-[0_6px_20px_rgba(0,0,0,0.06)] transition-all duration-700 opacity-0 animate-fade-in">
+                <div className="flex justify-center md:justify-end mb-6 sm:mb-0">
+                  <Avatar className="w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] border-0 shadow-[0_6px_20px_rgba(0,0,0,0.06)] transition-all duration-700 opacity-0 animate-fade-in">
                     <AvatarImage src="/images/glaboy-headshot-1.jpg" alt="Designer portrait" />
                     <AvatarFallback>GL</AvatarFallback>
                   </Avatar>
@@ -388,8 +388,10 @@ export default function DesignerPortfolio() {
 
                 {/* Right: Text Content */}
                 <div className="flex flex-col justify-center transition-all duration-700 opacity-0 animate-fade-in-delay">
-                  <h2 className="text-[36px] sm:text-[40px] font-bold tracking-tight mb-5 text-gray-900">What I Do</h2>
-                  <div className="space-y-5 text-gray-700 text-[15px] sm:text-[16px] leading-relaxed max-w-[600px]">
+                  <h2 className="text-[32px] sm:text-[40px] font-bold tracking-tight mb-3 sm:mb-5 text-gray-900">
+                    What I Do
+                  </h2>
+                  <div className="space-y-4 sm:space-y-5 text-gray-700 text-[15px] sm:text-[16px] leading-[1.35] sm:leading-relaxed max-w-[600px]">
                     <p>
                       I create high-fidelity technical visualizations that transform complex engineering concepts into
                       clear, compelling imagery. With 8+ years of experience, I specialize in producing photorealistic
@@ -407,11 +409,13 @@ export default function DesignerPortfolio() {
               </div>
 
               {/* Row 2: Who I Am - Text Left, Image Right */}
-              <div className="grid md:grid-cols-2 gap-12 sm:gap-16 items-center">
+              <div className="grid md:grid-cols-2 gap-8 sm:gap-16 items-center">
                 {/* Left: Text Content */}
                 <div className="flex flex-col justify-center order-2 md:order-1 transition-all duration-700 opacity-0 animate-fade-in-delay">
-                  <h2 className="text-[36px] sm:text-[40px] font-bold tracking-tight mb-5 text-gray-900">Who I Am</h2>
-                  <div className="space-y-5 text-gray-700 text-[15px] sm:text-[16px] leading-relaxed max-w-[600px]">
+                  <h2 className="text-[32px] sm:text-[40px] font-bold tracking-tight mb-3 sm:mb-5 text-gray-900">
+                    Who I Am
+                  </h2>
+                  <div className="space-y-4 sm:space-y-5 text-gray-700 text-[15px] sm:text-[16px] leading-[1.35] sm:leading-relaxed max-w-[600px]">
                     <p>
                       I'm a detail-oriented technical visualization specialist passionate about making complex
                       engineering accessible through design. My approach blends technical precision with creative
@@ -426,8 +430,8 @@ export default function DesignerPortfolio() {
                 </div>
 
                 {/* Right: Cherry Photo */}
-                <div className="flex justify-center md:justify-start order-1 md:order-2">
-                  <Avatar className="w-[240px] h-[240px] sm:w-[260px] sm:h-[260px] border-0 shadow-[0_6px_20px_rgba(0,0,0,0.06)] transition-all duration-700 opacity-0 animate-fade-in">
+                <div className="flex justify-center md:justify-start order-1 md:order-2 mb-6 sm:mb-0">
+                  <Avatar className="w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] border-0 shadow-[0_6px_20px_rgba(0,0,0,0.06)] transition-all duration-700 opacity-0 animate-fade-in">
                     <AvatarImage src="/images/cherry-headshot.jpg" alt="Cherry the chihuahua" />
                     <AvatarFallback>🐕</AvatarFallback>
                   </Avatar>
@@ -437,11 +441,12 @@ export default function DesignerPortfolio() {
           </section>
 
           {/* Mobile-only divider between About and Contact sections */}
-          <div className="block md:hidden border-t border-gray-200 mx-6 my-16"></div>
+          <div className="block md:hidden border-t border-gray-200 mx-6 my-10"></div>
 
-          <section id="contact" className="mt-20 sm:mt-28 mb-12 sm:mb-16 text-center">
+          {/* Contact Section */}
+          <section id="contact" className="mt-12 sm:mt-28 mb-12 sm:mb-16 text-center">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Let's Create Together</h2>
-            <p className="max-w-xl mx-auto text-gray-600 mb-12">
+            <p className="max-w-xl mx-auto text-gray-600 mb-10 sm:mb-12 px-4">
               Have a project in mind or just want to say hello? I'd love to hear from you.
             </p>
             <ContactForm />

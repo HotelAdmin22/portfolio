@@ -160,3 +160,15 @@
 .animate-fade-in-delay {
   animation: fadeIn 0.8s ease-out 0.2s forwards;
 }
+
+/* Added safe area handling for iOS notch and mobile spacing optimization */
+.safe-top {
+  padding-top: max(env(safe-area-inset-top), 1rem);
+}
+
+@media (max-width: 430px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
