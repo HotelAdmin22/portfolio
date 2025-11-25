@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import Image from "next/image"
 import { useState } from "react"
@@ -24,6 +26,10 @@ interface ProjectModalProps {
 
 export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [touchEnd, setTouchEnd] = useState<number | null>(null)
+
+  const minSwipeDistance = 50
 
   if (!project) {
     return null
@@ -41,6 +47,30 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
     setCurrentImageIndex((prev) => (prev - 1 + projectImages.length) % projectImages.length)
   }
 
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+
+    if (isLeftSwipe && hasMultipleImages) {
+      nextImage()
+    }
+    if (isRightSwipe && hasMultipleImages) {
+      prevImage()
+    }
+  }
+
   const handleClose = (open: boolean) => {
     if (!open) {
       setCurrentImageIndex(0)
@@ -51,7 +81,12 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="bg-gray-950 border-gray-800 text-white max-w-4xl w-[95vw] p-0 rounded-lg">
-        <div className="relative w-full aspect-video group">
+        <div
+          className="relative w-full aspect-video group"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           <Image
             src={currentImage || "/placeholder.svg"}
             alt={project.title}
