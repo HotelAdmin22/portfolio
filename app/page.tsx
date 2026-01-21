@@ -11,7 +11,7 @@ export type PortfolioItem = {
   id: number
   title: string
   src: string
-  images: string[] // can be images OR videos
+  images: string[] // can be images OR videos OR URLs (incl. Vimeo page/embed links)
   category: string
   description: string
   tools: string[]
@@ -22,6 +22,7 @@ const portfolioItems: Record<string, PortfolioItem[]> = {
     {
       id: 1,
       title: "Cloud Simulation Lightning Test",
+      // ✅ can be URL now (S3/CloudFront/Vimeo direct mp4/etc.)
       src: "/Cloud-Simulation/Lightning-Test.mp4",
       images: [
         "/Cloud-Simulation/genesis-laboy-genesis-laboy-screenshot-2025-01-28-145434.png",
@@ -37,36 +38,45 @@ const portfolioItems: Record<string, PortfolioItem[]> = {
     },
     {
       id: 2,
-      title: "EMG-Data-Visualization",
-      src: "/images/EMG-Data-Visualization/EMG%20Shader/Final-EMG-shader-in-use.mp4",
-      images: [
-        "/images/EMG-Data-Visualization/EMG%20Shader/genesis-laboy-info-1.png",
-        "/images/EMG-Data-Visualization/EMG%20Shader/genesis-laboy-info-2.png",
-        "/images/EMG-Data-Visualization/EMG%20Shader/shoulder-circles-emg-v2.mp4",
-      ],
-      category: "Industrial Visualization",
+      title: "SPI Borescopes (Recon & Epic Inspection Kits)",
+      src: "/images/SPI Borescopes/InspectionKit_PerspView_SecurityBorderLawEnforcement.png",
+      images: ["/images/SPI Borescopes/InspectionKit_TopView_SecurityBorderLawEnforcement.png"],
+      category: "Product Visualization",
       description:
-        "Detailed assembly visualization for aerospace manufacturing documentation. The renders provided clear, accurate representations of complex mechanical components and assembly sequences for training materials and technical manuals.",
-      tools: ["SolidWorks", "KeyShot", "Adobe Illustrator"],
+        "Product visualization and kit layout renders for borescope inspection systems. Emphasis on clean presentation, accurate proportions, and clear accessory callouts for marketing and documentation.",
+      tools: ["KeyShot", "Adobe Photoshop", "Adobe Illustrator"],
     },
     {
       id: 3,
-      title: "Satellite Systems Render",
-      src: "/images/International-Space-Station/ISS closeups.mp4",
+      title: "SPI Borescopes (Engine video)",
+      // ✅ Vimeo page URL supported (renders via iframe embed)
+      src: "https://vimeo.com/1156911569?fl=tl&fe=ec",
+      images: ["https://vimeo.com/1156911569?fl=tl&fe=ec"],
+      category: "Technical Rendering",
+      description:
+        "Motion-focused visualization demonstrating borescope inspection use-cases in an engine environment. Built for clarity, realism, and quick comprehension in sales and training contexts.",
+      tools: ["Blender", "After Effects", "Premiere Pro"],
+    },
+    {
+      id: 4,
+      title: "International Space Station",
+      // ✅ can be URL now
+      src: "https://vimeo.com/1156911149?fl=tl&fe=ec",
       images: [
-        "/images/International-Space-Station/genesis-laboy-1-orig.png",
+        "https://vimeo.com/1156911149?fl=tl&fe=ec",
         "/images/International-Space-Station/genesis-laboy-2-orig.png",
         "/images/International-Space-Station/genesis-laboy-3-orig.png",
         "/images/International-Space-Station/genesis-laboy-4-orig.png",
       ],
       category: "Technical Rendering",
       description:
-        "Photorealistic rendering of satellite systems for aerospace contractor presentations. The visualization captures intricate details of solar arrays, communication equipment, and structural elements with technical precision.",
+        "Photorealistic rendering of the International Space Station with attention to material realism, lighting, and technical accuracy for presentation and outreach.",
       tools: ["Blender", "Octane Render", "Adobe Photoshop"],
     },
     {
-      id: 4,
-      title: "Nasa Renders",
+      id: 5,
+      title: "NASA Renders",
+      // ✅ can be URL now
       src: "/images/NASA renders/Forces During Rocket Launch.mp4",
       images: [
         "/images/NASA renders/Forces During Rocket Launch.mp4",
@@ -77,163 +87,234 @@ const portfolioItems: Record<string, PortfolioItem[]> = {
       ],
       category: "Product Visualization",
       description:
-        "Technical renders for manufacturing automation systems. Created accurate visualizations of robotic systems for marketing materials, technical documentation, and investor presentations.",
+        "Technical renders for manufacturing automation and research concepts. Built for storytelling clarity, accuracy, and stakeholder-ready visuals.",
       tools: ["Cinema 4D", "Redshift", "Adobe After Effects"],
     },
-    {
-      id: 5,
-      title: "Spacecraft Interior Design",
-      src: "/spacecraft-cockpit-interior-technical-rendering.jpg",
-      images: [
-        "/spacecraft-cockpit-interior-technical-rendering.jpg",
-        "/spacecraft-control-panel-instruments-closeup.jpg",
-        "/spacecraft-seating-and-ergonomic-design-detail.jpg",
-      ],
-      category: "Environmental Design",
-      description:
-        "Interior visualization for next-generation spacecraft cabin design. The renders balance technical accuracy with human-centered design considerations for crew comfort and operational efficiency.",
-      tools: ["Blender", "V-Ray", "Adobe Photoshop"],
-    },
   ],
+
   technical: [
     {
       id: 1,
-      title: "Security Inspection Equipment Kit",
-      src: "/inspection-kit-persp-view-security-border-law-enf.png",
-      images: ["/inspection-kit-persp-view-security-border-law-enf.png"],
-      category: "Product Visualization",
+      title: "3D Heart",
+      src: "https://vimeo.com/1156910619?fl=tl&fe=ec",
+      images: [
+        "https://vimeo.com/1156910619?fl=tl&fe=ec",
+        "https://vimeo.com/1156910637?fl=tl&fe=ec",
+      ],
+      category: "Medical Visualization",
       description:
-        "Professional product visualization for law enforcement and border security inspection equipment. High-fidelity rendering showcases the complete kit layout including specialized tools, cables, carrying case, and accessories for technical documentation and marketing materials.",
-      tools: ["KeyShot", "Adobe Photoshop", "Illustrator"],
+        "Anatomy-focused render exploring form, lighting, and material response for medical visualization and educational use.",
+      tools: ["Blender", "Substance Painter", "Photoshop"],
     },
     {
       id: 2,
-      title: "Medical Device Rendering",
-      src: "/medical-device-technical-illustration-industrial-d.jpg",
-      images: [
-        "/medical-device-technical-illustration-industrial-d.jpg",
-        "/medical-device-internal-components-technical-cutaw.jpg",
-        "/medical-device-user-interface-detail-view.jpg",
-      ],
-      category: "Product Visualization",
+      title: "3D Scanning",
+      src: "https://vimeo.com/1156910903?fl=tl&fe=ec",
+      images: ["https://vimeo.com/1156910875?fl=tl&fe=ec"],
+      category: "Medical Visualization",
       description:
-        "Precision rendering of medical diagnostic equipment for FDA submission materials and marketing campaigns. The visualizations required extreme accuracy and attention to detail to meet regulatory standards.",
-      tools: ["KeyShot", "Adobe Illustrator", "Photoshop"],
+        "3D scan interpretation and cleanup workflows translated into clear visuals for clinical, research, or presentation needs.",
+      tools: ["RealityCapture", "Blender", "Photoshop"],
     },
     {
       id: 3,
-      title: "Engine Cross-Section",
-      src: "/jet-engine-cutaway-technical-illustration-industri.jpg",
+      title: "EMG Data Vis",
+      // ✅ can be URL now
+      src: "https://vimeo.com/1156911063?fl=tl&fe=ec",
       images: [
-        "/jet-engine-cutaway-technical-illustration-industri.jpg",
-        "/jet-engine-turbine-blades-closeup-technical-detail.jpg",
-        "/jet-engine-combustion-chamber-cutaway-view.jpg",
+        "/images/EMG-Data-Visualization/EMG%20Shader/genesis-laboy-info-1.png",
+        "/images/EMG-Data-Visualization/EMG%20Shader/genesis-laboy-info-2.png",
+        "https://vimeo.com/1156911080?fl=tl&fe=ec",
       ],
-      category: "Technical Illustration",
+      category: "Medical Visualization",
       description:
-        "Detailed cutaway illustration of jet engine components for educational and technical documentation. The visualization reveals internal mechanical systems while maintaining technical accuracy.",
-      tools: ["SolidWorks", "KeyShot", "Adobe Illustrator"],
+        "Data-driven EMG visualization for communicating muscle activation patterns. Designed to be readable, technically grounded, and visually compelling.",
+      tools: ["Blender", "KeyShot", "Adobe Illustrator"],
     },
     {
       id: 4,
-      title: "Renewable Energy Systems",
-      src: "/wind-turbine-solar-panel-technical-rendering-indus.jpg",
-      images: [
-        "/wind-turbine-solar-panel-technical-rendering-indus.jpg",
-        "/wind-turbine-nacelle-internal-components-technical.jpg",
-        "/placeholder.svg?height=600&width=800",
-      ],
-      category: "Industrial Design",
+      title: "Mocap Studies",
+      src: "https://vimeo.com/1156990052?fl=tl&fe=ec",
+      images: ["https://vimeo.com/1156990052?fl=tl&fe=ec"],
+      category: "Medical Visualization",
       description:
-        "Large-scale visualization of wind turbine and solar array installations for energy company proposals. The renders demonstrate system integration and environmental impact assessments.",
-      tools: ["Blender", "Lumion", "Adobe Photoshop"],
+        "Motion capture exploration for biomechanics and movement studies. Built to highlight motion, structure, and key anatomical/kinematic cues.",
+      tools: ["MotionBuilder", "Blender", "After Effects"],
     },
     {
       id: 5,
-      title: "Automotive Prototype",
-      src: "/electric-vehicle-prototype-technical-rendering-ind.jpg",
-      images: [
-        "/electric-vehicle-prototype-technical-rendering-ind.jpg",
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
-      ],
-      category: "Product Design",
+      title: "Muscle Slicing App",
+      src: "https://vimeo.com/1156911080?fl=tl&fe=ec",
+      images: ["https://vimeo.com/1156911080?fl=tl&fe=ec"],
+      category: "Medical Visualization",
       description:
-        "Concept visualization for electric vehicle prototype development. Created photorealistic renders that showcase design innovation and engineering solutions for stakeholder presentations.",
-      tools: ["Alias", "VRED", "Adobe Photoshop"],
+        "UI/visual system concepts for interactive anatomy slicing and exploration—focused on clarity, hierarchy, and user comprehension.",
+      tools: ["Figma", "After Effects", "Photoshop"],
+    },
+  ],
+
+  brandingIndustrial: [
+     {
+      id: 1,
+      title: "Cloud Simulation Lightning Test",
+      // ✅ can be URL now (S3/CloudFront/Vimeo direct mp4/etc.)
+      src: "/Cloud-Simulation/genesis-laboy-genesis-laboy-screenshot-2025-01-28-145520.png",
+      images: [
+        "/Cloud-Simulation/genesis-laboy-genesis-laboy-screenshot-2025-01-28-145434.png",
+        "/Cloud-Simulation/genesis-laboy-genesis-laboy-screenshot-2025-01-28-145520.png",
+        "/Cloud-Simulation/genesis-laboy-genesis-laboy-screenshot-2025-01-28-145541.png",
+        "/Cloud-Simulation/genesis-laboy-screenshot-2025-02-03-123837.png",
+        "/Cloud-Simulation/genesis-laboy-screenshot-2025-02-03-123917.png",
+      ],
+      category: "Technical Rendering",
+      description:
+        "High-fidelity cloud simulation and lightning interaction for aerospace safety analysis. The visualization accurately depicts electrical discharge patterns within turbulent cloud formations, aiding in the assessment of aircraft lightning strike risks.",
+      tools: ["Blender", "KeyShot", "Adobe Photoshop", "Substance Painter"],
+    },
+    {
+      id: 2,
+      title: "Skeletons",
+      src: "/images/Skeletons/genesis-laboy-skeleton-1.png",
+      images: [
+        "/images/Skeletons/genesis-laboy-skeleton-1.png",
+        "/images/Skeletons/genesis-laboy-skeleton-2.png",
+        "/images/Skeletons/skeleton houdini sim.mp4",
+        "/images/Skeletons/Skeleton Pile layout.mp4",
+        "/images/Skeletons/Skeleton Pile.mp4",
+      ],
+
+      category: "Concept Art",
+      description:
+        "Exploratory concept work focused on mood, composition, and narrative clarity—built for fast iteration and presentation-ready frames.",
+      tools: ["Photoshop", "Blender"],
+    },
+    {
+      id: 3,
+      title: "CAF Postcard",
+      src: "/images/CAF postcard/genesis-laboy-postcard-design-front.png",
+      images: [
+        "/images/CAF postcard/genesis-laboy-CAF-outro.mp4",
+        "/images/CAF postcard/genesis-laboy-postcard.png",
+      ],
+      category: "Print / Layout",
+      description:
+        "Postcard and campaign collateral design with clean hierarchy, consistent typographic rhythm, and a strong visual anchor.",
+      tools: ["Adobe InDesign", "Adobe Illustrator"],
+    },
+    {
+      id: 4,
+      title: "Boat and Kid",
+      src: "/images/EMG-Data-Visualization/Boat and Kid/AndrewAndBoat_Breakdown.mp4",
+      images: [
+        "/images/EMG-Data-Visualization/Boat and Kid/genesis-laboy-7-orig.png",
+        "/images/EMG-Data-Visualization/Boat and Kid/genesis-laboy-andrew-wireframe.png",
+        "/images/EMG-Data-Visualization/Boat and Kid/genesis-laboy-boat-wireframe.png",
+      ],
+      category: "Illustration",
+      description:
+        "Illustration set emphasizing readable storytelling, clear silhouettes, and purposeful detail for editorial or explainer formats.",
+      tools: ["Adobe Illustrator", "Photoshop"],
+    },
+    {
+      id: 5,
+      title: "Materials",
+      src: "/images/Materials/octopus/Tentacle_png.PNG",
+      images: [
+        "/images/Materials/octopus/Tentacle_png.PNG",
+        "/images/Materials/octopus/Tentacles_Node Graph.png",
+        "/images/Materials/rock/genesis-laboy-rocks-1.png",
+        "/images/Materials/rock/genesis-laboy-rocks.png",
+        "/images/Materials/rock/genesis-laboy-screenshot-2025-01-28-134538.png",
+        "/images/Materials/sand/genesis-laboy-sand.png",
+        "/images/Materials/sand/genesis-laboy-screenshot-2025-02-08-131221.png",
+
+
+      ],
+      category: "Lookdev / Materials",
+      description: "Material studies and look-development experiments to improve realism and consistency across stills and motion.",
+      tools: ["Substance Painter", "Blender", "Photoshop"],
     },
     {
       id: 6,
-      title: "Manufacturing Facility Layout",
-      src: "/factory-floor-layout-industrial-visualization-tech.jpg",
-      images: [
-        "/factory-floor-layout-industrial-visualization-tech.jpg",
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
+      title: "Pyro Texture Effect",
+      src: "https://vimeo.com/1156911437?fl=tl&fe=ec",
+      images: ["https://vimeo.com/1156911437?fl=tl&fe=ec",
+        "https://vimeo.com/1156911460?fl=tl&fe=ec",
+        "https://vimeo.com/1156911447?fl=tl&fe=ec"
       ],
-      category: "Architectural Visualization",
-      description:
-        "Comprehensive 3D visualization of manufacturing facility layout and workflow optimization. The renders assist in planning equipment placement, material flow, and safety compliance.",
-      tools: ["SketchUp", "Lumion", "Adobe InDesign"],
-    },
-  ],
-  brandingIndustrial: [
-    {
-      id: 1,
-      title: "Kraken Labs Identity",
-      src: "/technology-laboratory-logo-branding-industrial.jpg",
-      images: ["/technology-laboratory-logo-branding-industrial.jpg"],
-      category: "Corporate Identity",
-      description:
-        "Complete brand identity system for an industrial technology laboratory. The design merges scientific precision with creative innovation, reflecting the company's mission to deliver cutting-edge solutions.",
-      tools: ["Adobe Illustrator", "Adobe Photoshop"],
+      category: "VFX / Procedural",
+      description: "Procedural texture and pyro-style effect explorations for cinematic motion and stylized technical storytelling.",
+      tools: ["Houdini", "After Effects", "Photoshop"],
     },
     {
-      id: 2,
-      title: "Defense Contractor Branding",
-      src: "/defense-aerospace-company-branding-industrial-prof.jpg",
-      images: ["/defense-aerospace-company-branding-industrial-prof.jpg"],
-      category: "Corporate Branding",
+      id: 7,
+      title: "Studio Packaging Concepts",
+      src: "/images/Creative/studio-packaging.jpg",
+      images: ["/images/Creative/studio-packaging.jpg"],
+      category: "Brand Systems",
       description:
-        "Professional branding package for aerospace and defense contractor. The design conveys trust, precision, and technical excellence while remaining accessible for diverse stakeholder audiences.",
-      tools: ["Adobe Illustrator", "Adobe InDesign"],
-    },
-    {
-      id: 3,
-      title: "Technical Conference Materials",
-      src: "/engineering-conference-presentation-materials-indu.jpg",
-      images: ["/engineering-conference-presentation-materials-indu.jpg"],
-      category: "Event Design",
-      description:
-        "Visual design for international engineering conference including signage, presentation templates, and promotional materials. The design system maintains professional standards while being visually engaging.",
-      tools: ["Adobe InDesign", "Adobe Illustrator", "Figma"],
-    },
-    {
-      id: 4,
-      title: "Industrial Safety Infographics",
-      src: "/workplace-safety-infographic-industrial-technical-.jpg",
-      images: ["/workplace-safety-infographic-industrial-technical-.jpg"],
-      category: "Information Design",
-      description:
-        "Clear, accessible safety infographics for manufacturing environments. The designs communicate complex safety protocols through visual hierarchy and intuitive iconography.",
-      tools: ["Adobe Illustrator", "Adobe InDesign"],
-    },
-    {
-      id: 5,
-      title: "Engineering Proposal Templates",
-      src: "/technical-proposal-document-design-professional-in.jpg",
-      images: ["/technical-proposal-document-design-professional-in.jpg"],
-      category: "Document Design",
-      description:
-        "Professional template system for engineering proposals and technical documentation. The design balances technical content with visual appeal to support winning presentations.",
-      tools: ["Adobe InDesign", "Adobe Illustrator"],
+        "Packaging and brand-extension concepts designed to unify identity across touchpoints while staying clean and premium.",
+      tools: ["Illustrator", "InDesign", "Figma"],
     },
   ],
 }
 
+// ✅ Detects http(s) URLs
+function isHttpUrl(src: string) {
+  return /^https?:\/\//i.test(src || "")
+}
+
+// ✅ Vimeo helpers (page URL or embed URL)
+function isVimeoUrl(src: string) {
+  return /vimeo\.com/i.test(src || "")
+}
+
+function toVimeoEmbedUrl(url: string) {
+  // Matches:
+  // https://vimeo.com/123
+  // https://vimeo.com/123?foo=bar
+  // https://player.vimeo.com/video/123
+  const match = (url || "").match(/vimeo\.com\/(?:video\/)?(\d+)/i)
+  const id = match?.[1]
+  return id ? `https://player.vimeo.com/video/${id}` : url
+}
+
+// ✅ Detects local or URL videos (handles query strings too)
+// NOTE: Vimeo is treated as "video" but rendered via iframe (not <video>)
 function isVideoSrc(src: string) {
-  const s = (src || "").toLowerCase()
-  return s.endsWith(".mp4") || s.endsWith(".webm")
+  if (isVimeoUrl(src)) return true
+  const s = (src || "").toLowerCase().split("?")[0].split("#")[0]
+  return s.endsWith(".mp4") || s.endsWith(".webm") || s.endsWith(".mov") || s.endsWith(".m4v")
+}
+
+// ✅ Next/Image can't render remote images unless configured; for remote assets we render <img />
+function ImgOrNextImage({
+  src,
+  alt,
+  width,
+  height,
+  className,
+}: {
+  src: string
+  alt: string
+  width?: number
+  height?: number
+  className?: string
+}) {
+  const remote = isHttpUrl(src)
+  if (remote) {
+    return <img src={src} alt={alt} className={className} loading="lazy" />
+  }
+
+  return (
+    <Image
+      src={src || "/placeholder.svg"}
+      alt={alt}
+      width={width ?? 1200}
+      height={height ?? 900}
+      className={className}
+    />
+  )
 }
 
 function MediaThumb({
@@ -251,7 +332,18 @@ function MediaThumb({
 
   return (
     <div className="overflow-hidden rounded-lg bg-black">
-      {isVideo ? (
+      {/* ✅ Vimeo links render via iframe embed (page URLs supported) */}
+      {isVimeoUrl(item.src) ? (
+        <div className={`${ratioClass} w-full bg-black`}>
+          <iframe
+            src={`${toVimeoEmbedUrl(item.src)}?background=1&autoplay=0&loop=1&byline=0&title=0&muted=1`}
+            className="w-full h-full"
+            allow="autoplay; fullscreen; picture-in-picture"
+            loading="lazy"
+            title={item.title}
+          />
+        </div>
+      ) : isVideo ? (
         <video
           src={item.src}
           muted
@@ -259,14 +351,16 @@ function MediaThumb({
           playsInline
           preload="metadata"
           className={`${ratioClass} w-full h-full object-cover group-hover:scale-105 transition-transform duration-300`}
-          onMouseEnter={(e) => e.currentTarget.play()}
+          onMouseEnter={(e) => {
+            e.currentTarget.play().catch(() => {})
+          }}
           onMouseLeave={(e) => {
             e.currentTarget.pause()
             e.currentTarget.currentTime = 0
           }}
         />
       ) : (
-        <Image
+        <ImgOrNextImage
           src={item.src || "/placeholder.svg"}
           alt={item.title}
           width={width}
@@ -290,7 +384,6 @@ function ProjectModal({
   useEffect(() => {
     if (!isOpen) return
 
-    // lock background scroll (keep current scroll position)
     const scrollY = window.scrollY
     const prev = {
       position: document.body.style.position,
@@ -327,15 +420,21 @@ function ProjectModal({
     }
   }, [isOpen, onClose])
 
-  const gallery = useMemo(() => {
-    if (!project) return []
+  const { heroSrc, rest } = useMemo(() => {
+    if (!project) return { heroSrc: "", rest: [] as string[] }
+
     const all = [project.src, ...(project.images ?? [])].filter(Boolean)
     const seen = new Set<string>()
-    return all.filter((s) => {
+    const unique = all.filter((s) => {
       if (seen.has(s)) return false
       seen.add(s)
       return true
     })
+
+    return {
+      heroSrc: unique[0] ?? "",
+      rest: unique.slice(1),
+    }
   }, [project])
 
   if (!isOpen || !project) return null
@@ -343,12 +442,24 @@ function ProjectModal({
   return (
     <div className="fixed inset-0 z-[999]">
       <button aria-label="Close modal" className="absolute inset-0 bg-black/70" onClick={onClose} />
-      <div className="absolute inset-x-0 top-6 sm:top-10 mx-auto w-[92vw] max-w-5xl">
-        <div className="relative rounded-2xl bg-white shadow-2xl overflow-hidden max-h-[85vh] flex flex-col">
-          <div className="flex items-start justify-between gap-4 p-5 sm:p-6 border-b border-gray-200 shrink-0">
-            <div>
-              <h3 className="text-lg sm:text-xl font-bold tracking-tight text-gray-950">{project.title}</h3>
+
+      <div className="absolute inset-x-0 top-4 sm:top-8 mx-auto w-[94vw] max-w-6xl">
+        <div className="relative rounded-2xl bg-white shadow-2xl overflow-hidden max-h-[88vh] flex flex-col">
+          <div className="flex items-start justify-between gap-4 p-4 sm:p-6 border-b border-gray-200 shrink-0">
+            <div className="min-w-0">
+              <h3 className="text-lg sm:text-xl font-bold tracking-tight text-gray-950 truncate">{project.title}</h3>
               <p className="text-sm text-gray-600 mt-1">{project.category}</p>
+
+              <div className="mt-3 flex flex-wrap gap-2">
+                {project.tools.map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs font-medium px-2.5 py-1 rounded-full border border-gray-200 text-gray-700"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
 
             <Button variant="ghost" size="icon" onClick={onClose} className="shrink-0">
@@ -357,37 +468,89 @@ function ProjectModal({
             </Button>
           </div>
 
-          <div className="p-5 sm:p-6 overflow-y-auto overscroll-contain">
-            <p className="text-gray-700 leading-relaxed mb-4">{project.description}</p>
+          <div className="p-4 sm:p-6 overflow-y-auto overscroll-contain">
+            <p className="text-gray-700 leading-relaxed mb-5">{project.description}</p>
 
-            <div className="flex flex-wrap gap-2 mb-6">
-              {project.tools.map((t) => (
-                <span
-                  key={t}
-                  className="text-xs font-medium px-2.5 py-1 rounded-full border border-gray-200 text-gray-700"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {gallery.map((src, idx) => (
-                <div key={`${src}-${idx}`} className="rounded-xl overflow-hidden bg-black">
-                  {isVideoSrc(src) ? (
-                    <video src={src} controls playsInline preload="metadata" className="w-full h-auto" />
-                  ) : (
-                    <Image
-                      src={src}
-                      alt={`${project.title} - ${idx + 1}`}
-                      width={1200}
-                      height={900}
-                      className="w-full h-auto object-cover"
+            {/* HERO MEDIA (no crop; supports URL videos + Vimeo embeds) */}
+            {heroSrc ? (
+              <div className="rounded-xl overflow-hidden bg-black mb-5">
+                {isVimeoUrl(heroSrc) ? (
+                  <div className="aspect-video w-full">
+                    <iframe
+                      src={`${toVimeoEmbedUrl(heroSrc)}?autoplay=0&loop=0&byline=0&title=0`}
+                      className="w-full h-full"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      title={`${project.title} video`}
                     />
-                  )}
-                </div>
-              ))}
-            </div>
+                  </div>
+                ) : isVideoSrc(heroSrc) ? (
+                  <video
+                    src={heroSrc}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-[40vh] sm:h-[55vh] max-h-[62vh] object-contain bg-black"
+                  />
+                ) : (
+                  <div className="relative w-full h-[40vh] sm:h-[55vh] max-h-[62vh] bg-black">
+                    {isHttpUrl(heroSrc) ? (
+                      <img
+                        src={heroSrc}
+                        alt={`${project.title} - hero`}
+                        className="w-full h-full object-contain"
+                      />
+                    ) : (
+                      <Image
+                        src={heroSrc}
+                        alt={`${project.title} - hero`}
+                        fill
+                        sizes="94vw"
+                        className="object-contain"
+                      />
+                    )}
+                  </div>
+                )}
+              </div>
+            ) : null}
+
+            {/* Rest of gallery tiles */}
+            {rest.length ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {rest.map((src, idx) => (
+                  <div
+                    key={`${src}-${idx}`}
+                    className="relative overflow-hidden rounded-xl bg-black aspect-[4/3] sm:aspect-video"
+                  >
+                    {isVimeoUrl(src) ? (
+                      <iframe
+                        src={`${toVimeoEmbedUrl(src)}?autoplay=0&loop=0&byline=0&title=0`}
+                        className="absolute inset-0 w-full h-full"
+                        allow="autoplay; fullscreen; picture-in-picture"
+                        loading="lazy"
+                        title={`${project.title} - vimeo-${idx + 2}`}
+                      />
+                    ) : isVideoSrc(src) ? (
+                      <video src={src} controls playsInline preload="metadata" className="absolute inset-0 w-full h-full object-cover" />
+                    ) : isHttpUrl(src) ? (
+                      <img
+                        src={src}
+                        alt={`${project.title} - ${idx + 2}`}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <Image
+                        src={src}
+                        alt={`${project.title} - ${idx + 2}`}
+                        fill
+                        sizes="(max-width: 768px) 94vw, 50vw"
+                        className="object-cover"
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
@@ -396,17 +559,18 @@ function ProjectModal({
 }
 
 function LogoMarquee() {
-  // placeholders — swap with your partner logos later
   const logos = [
     { alt: "Partner Logo 1", src: "/images/SPI Borescopes/Client logos/KSC_logo.png?height=64&width=180" },
-    { alt: "Partner Logo 2", src: "/images/SPI Borescopes/Client logos/Nagoya Uni Med School logo.png?height=64&width=180" },
+    {
+      alt: "Partner Logo 2",
+      src: "/images/SPI Borescopes/Client logos/Nagoya Uni Med School logo.png?height=64&width=180",
+    },
     { alt: "Partner Logo 3", src: "/images/SPI Borescopes/Client logos/SPI logo.png?height=64&width=180" },
     { alt: "Partner Logo 4", src: "/images/SPI Borescopes/Client logos/TG_logo.png?height=64&width=180" },
-    { alt: "Partner Logo 5", src: "/images/SPI Borescopes/Client logos/UCF SVAD logo.jpg?height=64&width=180" }
-    
+    { alt: "Partner Logo 5", src: "/images/SPI Borescopes/Client logos/UCF SVAD logo.jpg?height=64&width=180" },
   ]
 
-  const row = [...logos, ...logos] // duplicate for seamless loop
+  const row = [...logos, ...logos]
 
   return (
     <section aria-label="Partners" className="bg-white pt-4 pb-4 sm:pt-6 sm:pb-6">
@@ -415,12 +579,9 @@ function LogoMarquee() {
           <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-gray-900">
             Organizations we’ve partnered with
           </h3>
-          <p className="text-sm text-gray-600 mt-1">Placeholders shown — swap for real logos anytime.</p>
         </div>
 
-        {/* no border */}
         <div className="relative overflow-hidden rounded-2xl bg-white">
-          {/* optional edge fades (remove if you want it totally clean) */}
           <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white to-transparent z-10" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white to-transparent z-10" />
 
@@ -518,7 +679,6 @@ export default function DesignerPortfolio() {
           </div>
         </header>
 
-        {/* HERO: taller on desktop + remove top white gap by removing big margins */}
         <section
           className="
             relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]
@@ -526,7 +686,6 @@ export default function DesignerPortfolio() {
             mt-0 mb-10 sm:mb-16
             h-[clamp(420px,62vh,560px)]
             sm:h-[85vh] sm:min-h-[600px]
-           
           "
         >
           <iframe
@@ -582,7 +741,7 @@ export default function DesignerPortfolio() {
             </div>
 
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4">Technical Visualization</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4">Medical Visualization</h2>
               <div className="relative">
                 <div className="flex space-x-4 sm:space-x-6 overflow-x-auto pb-4 -mb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
                   {portfolioItems.technical.map((item) => (
@@ -603,7 +762,7 @@ export default function DesignerPortfolio() {
             </div>
 
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4">Branding & Documentation</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4">Creative Industries</h2>
               <div className="relative">
                 <div className="flex space-x-4 sm:space-x-6 overflow-x-auto pb-4 -mb-4 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
                   {portfolioItems.brandingIndustrial.map((item) => (
@@ -624,7 +783,6 @@ export default function DesignerPortfolio() {
             </div>
           </section>
 
-          {/* Creative Services Section (tighter on desktop) */}
           <section className="pt-10 pb-10 sm:pt-14 sm:pb-14 md:pt-16 md:pb-16">
             <div className="container mx-auto max-w-6xl px-5 sm:px-6">
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-10 sm:mb-12 text-center text-gray-900">
@@ -674,13 +832,14 @@ export default function DesignerPortfolio() {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                        d="M4 7a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V7zm3 10h10M8 9h2m4 0h2"
                       />
                     </svg>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold mb-3 text-gray-900">Technical Illustration</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3 text-gray-900">Immersive Technologies</h3>
                   <p className="text-gray-700 text-base leading-relaxed">
-                    Transforming technical specifications into clear, compelling visuals for documentation, proposals, and marketing.
+                    Real-time and interactive experiences—AR/VR, simulation-ready assets, and immersive demos that help teams
+                    explore complex systems with clarity.
                   </p>
                 </div>
 
@@ -705,7 +864,6 @@ export default function DesignerPortfolio() {
             </div>
           </section>
 
-          {/* About Section (rewritten + tighter spacing) */}
           <section id="about" className="pt-10 pb-10 sm:pt-14 sm:pb-14 md:pt-16 md:pb-16 bg-white">
             <div className="container mx-auto max-w-5xl px-5 sm:px-6 space-y-10">
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-center text-[#75d0de]">
@@ -718,7 +876,8 @@ export default function DesignerPortfolio() {
                   <p>
                     At Kraken Labs, we create high-fidelity technical visualizations that transform complex concepts into clear,
                     compelling imagery. With 8+ years of experience, we specialize in producing photorealistic renders for
-                    aerospace, industrial, and medical visualization clients who require both technical accuracy and strong visual impact.
+                    aerospace, industrial, and medical visualization clients who require both technical accuracy and strong visual
+                    impact.
                   </p>
                   <p>
                     Our work bridges engineering and design—turning technical specifications into visuals used for documentation,
@@ -756,29 +915,27 @@ export default function DesignerPortfolio() {
                 <div className="order-1 md:order-2 space-y-4 text-gray-700 text-base leading-relaxed">
                   <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Who I Am</h3>
                   <p>
-                    I&apos;m Genesis Laboy, founder of Kraken Labs. I&apos;m a detail-oriented technical artist passionate about
-                    making complex ideas accessible through design. I started my company to support the ever-growing need for 3D
+                    I&apos;m Genesis Laboy, founder of Kraken Labs. I&apos;m a detail-oriented technical artist passionate about making
+                    complex ideas accessible through design. I started my company to support the ever-growing need for 3D
                     visualization in the simulation and training capital of the world—and my longtime home—Orlando, FL.
                   </p>
                   <p>
-                    Using industry-leading software, my approach blends technical precision with creative problem-solving to produce
-                    visuals that inform, persuade, and inspire.
+                    Using industry-leading software, my approach blends technical precision with creative problem-solving to
+                    produce visuals that inform, persuade, and inspire.
                   </p>
                   <p>
-                    When I&apos;m not creating renders or refining technical documentation, you&apos;ll find me with my Director of Barketing,
-                    <span className="font-semibold text-gray-900"> Cherry</span>—the chihuahua who keeps me inspired, grounded, and entertained
-                    throughout the design process.
+                    When I&apos;m not creating renders or refining technical documentation, you&apos;ll find me with my Director of
+                    Barketing,
+                    <span className="font-semibold text-gray-900"> Cherry</span>—the chihuahua who keeps me inspired, grounded, and
+                    entertained throughout the design process.
                   </p>
                 </div>
               </div>
 
-              {/* Logos marquee banner (infinite loop, no border) */}
               <LogoMarquee />
-
             </div>
           </section>
 
-          {/* Contact (tighter + more breathing room for button/socials) */}
           <section id="contact" className="pt-6 pb-14 sm:pt-8 sm:pb-20 md:pt-10 md:pb-24 text-center">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4 sm:mb-6 text-center text-[#75d0de]">
               Let&apos;s Work Together
@@ -792,10 +949,7 @@ export default function DesignerPortfolio() {
             </div>
 
             <div className="mt-8 sm:mt-10 flex justify-center gap-6 sm:gap-8">
-              <Link
-                href="mailto:contact@krakenlabs.design"
-                className="text-gray-600 hover:text-[#75d0de] transition-colors"
-              >
+              <Link href="mailto:contact@krakenlabs.design" className="text-gray-600 hover:text-[#75d0de] transition-colors">
                 <Mail className="h-6 w-6" />
                 <span className="sr-only">Email</span>
               </Link>
