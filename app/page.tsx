@@ -39,7 +39,7 @@ const portfolioItems: Record<string, PortfolioItem[]> = {
     {
       id: 2,
       title: "SPI Borescopes (Recon & Epic Inspection Kits)",
-      src: "/images/SPI Borescopes/InspectionKit_PerspView_SecurityBorderLawEnforcement.png",
+      src: "images/SPI Borescopes/New Website Images/Thumbnails/Borescope Inspection Renders.png",
       images: ["/images/SPI Borescopes/InspectionKit_TopView_SecurityBorderLawEnforcement.png"],
       category: "Product Visualization",
       description:
@@ -50,7 +50,7 @@ const portfolioItems: Record<string, PortfolioItem[]> = {
       id: 3,
       title: "SPI Borescopes (Engine video)",
       // ✅ Vimeo page URL supported (renders via iframe embed)
-      src: "https://vimeo.com/1156911569?fl=tl&fe=ec",
+      src: "images/SPI Borescopes/New Website Images/Thumbnails/Aircraft Turbine.png",
       images: ["https://vimeo.com/1156911569?fl=tl&fe=ec"],
       category: "Technical Rendering",
       description:
@@ -77,7 +77,7 @@ const portfolioItems: Record<string, PortfolioItem[]> = {
       id: 5,
       title: "NASA Renders",
       // ✅ can be URL now
-      src: "/images/NASA renders/Forces During Rocket Launch.mp4",
+      src: "/images/SPI Borescopes/New Website Images/Thumbnails/Journey through The Galaxy.png",
       images: [
         "/images/NASA renders/Forces During Rocket Launch.mp4",
         "/images/NASA renders/Shrimp.mp4",
@@ -96,7 +96,7 @@ const portfolioItems: Record<string, PortfolioItem[]> = {
     {
       id: 1,
       title: "3D Heart",
-      src: "https://vimeo.com/1156910619?fl=tl&fe=ec",
+      src: "images/SPI Borescopes/New Website Images/Thumbnails/Anatomical XR Model.png",
       images: [
         "https://vimeo.com/1156910619?fl=tl&fe=ec",
         "https://vimeo.com/1156910637?fl=tl&fe=ec",
@@ -204,7 +204,7 @@ const portfolioItems: Record<string, PortfolioItem[]> = {
     {
       id: 4,
       title: "Boat and Kid",
-      src: "/images/EMG-Data-Visualization/Boat and Kid/AndrewAndBoat_Breakdown.mp4",
+      src: "/images/SPI Borescopes/New Website Images/Thumbnails/Hero Character and Props.png",
       images: [
         "/images/EMG-Data-Visualization/Boat and Kid/genesis-laboy-7-orig.png",
         "/images/EMG-Data-Visualization/Boat and Kid/genesis-laboy-andrew-wireframe.png",

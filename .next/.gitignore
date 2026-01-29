@@ -1,5 +1,0 @@
-# Keep media out of git
-public/images/
-public/**/*.mp4
-public/**/*.mov
-public/**/*.webm
