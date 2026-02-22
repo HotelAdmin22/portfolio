@@ -20,7 +20,7 @@ export const portfolioQuery = `
 
 // ---------------------------------------------------------------------------
 // Raw shape coming back from Sanity
-// ----------------------A-----------------------------------------------------
+// ---------------------------------------------------------------------------
 type SanityProject = {
   _id: string
   title: string
@@ -38,8 +38,8 @@ type SanityProject = {
 // ---------------------------------------------------------------------------
 function toVimeoUrl(key?: string): string {
   if (!key) return ""
-  if (/^https?:\/\//i.test(key)) return key          // already a full URL
-  if (/^\d+$/.test(key.trim())) return `https://vimeo.com/${key.trim()}` // bare ID
+  if (/^https?:\/\//i.test(key)) return key
+  if (/^\d+$/.test(key.trim())) return `https://vimeo.com/${key.trim()}`
   return key
 }
 
@@ -63,7 +63,6 @@ export async function getPortfolioItems(
 
     if (!projects?.length) return null
 
-    // Group by section key
     const grouped: Record<string, PortfolioItem[]> = {}
 
     projects.forEach((project, idx) => {
@@ -71,11 +70,7 @@ export async function getPortfolioItems(
       if (!grouped[section]) grouped[section] = []
 
       const vimeoUrl = toVimeoUrl(project.videoKey)
-
-      // src: prefer thumbnail image, fall back to vimeo URL
       const src = project.thumbnailUrl ?? vimeoUrl
-
-      // images: vimeo first (hero video), then gallery stills
       const images: string[] = [
         ...(vimeoUrl ? [vimeoUrl] : []),
         ...(project.galleryUrls ?? []),
@@ -98,6 +93,7 @@ export async function getPortfolioItems(
     return null
   }
 }
+
 export const siteSettingsQuery = `
   *[_type == "siteSettings"][0] {
     heroHeadingLine1,
@@ -105,6 +101,7 @@ export const siteSettingsQuery = `
     heroSubtitle,
     heroVideoId,
     whatWeDoHeading,
+    whatWeDoBody,
     whoIAmHeading,
     whoIAmBody,
     "headshotUrl": headshot.asset->url,
@@ -127,6 +124,7 @@ export type SiteSettings = {
   heroSubtitle?: string
   heroVideoId?: string
   whatWeDoHeading?: string
+  whatWeDoBody?: string
   whoIAmHeading?: string
   whoIAmBody?: string
   headshotUrl?: string

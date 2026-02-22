@@ -557,9 +557,9 @@ export default function DesignerPortfolio({ data, settings }: Props) {
   const heroVideoId = settings?.heroVideoId ?? "1148476066"
 
   // About settings
-  const whatWeDoHeading = settings?.whatWeDoHeading ?? "What We Do"
-  const whoIAmHeading = settings?.whoIAmHeading ?? "Who I Am"
-  const whoIAmBody = settings?.whoIAmBody ?? null
+ const whatWeDoHeading = settings?.whatWeDoHeading ?? "What We Do"
+const whatWeDoBody = settings?.whatWeDoBody ?? null   // ← add this
+const whoIAmHeading = settings?.whoIAmHeading ?? "Who I Am"
   const headshotUrl = settings?.headshotUrl ?? "/images/glaboy-headshot-1.jpg"
   const cherryPhotoUrl = settings?.cherryPhotoUrl ?? "/images/cherry-headshot.jpg"
 
@@ -715,21 +715,20 @@ export default function DesignerPortfolio({ data, settings }: Props) {
           </section>
 
           {/* About */}
-          <section id="about" className="pt-10 pb-10 sm:pt-14 sm:pb-14 md:pt-16 md:pb-16 bg-white">
-            <div className="container mx-auto max-w-5xl px-5 sm:px-6 space-y-10">
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-center text-[#75d0de]">
-                About Kraken Labs
-              </h2>
-              <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-start">
-                <div className="space-y-4 text-gray-700 text-base leading-relaxed">
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{whatWeDoHeading}</h3>
-                  <p>
-                    At Kraken Labs, we create high-fidelity technical visualizations that transform complex concepts into clear, compelling imagery. With 8+ years of experience, we specialize in producing photorealistic renders for aerospace, industrial, and medical visualization clients who require both technical accuracy and strong visual impact.
-                  </p>
-                  <p>
-                    Our work bridges engineering and design—turning technical specifications into visuals used for documentation, stakeholder presentations, marketing materials, and public outreach. Every project meets the rigorous standards of organizations like NASA while maintaining a polished, modern design aesthetic.
-                  </p>
-                </div>
+       <section id="about" className="pt-10 pb-10 sm:pt-14 sm:pb-14 md:pt-16 md:pb-16 bg-white">
+  <div className="container mx-auto max-w-5xl px-5 sm:px-6 space-y-10">
+    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-center text-[#75d0de]">
+      About Kraken Labs
+    </h2>
+    <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-start">
+      <div className="space-y-4 text-gray-700 text-base leading-relaxed">
+        <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{whatWeDoHeading}</h3>
+        {whatWeDoBody
+          ?.split(/\n\s*\n/)
+          .map((para, i) => (
+            <p key={i}>{para.trim()}</p>
+          ))}
+      </div>
                 <div className="space-y-4">
                   <div className="overflow-hidden rounded-lg shadow-[0_2px_12px_rgba(0,0,0,0.06)] w-full max-w-md ml-auto">
                     {isHttpUrl(headshotUrl) ? (
