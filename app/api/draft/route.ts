@@ -1,20 +1,15 @@
-import { validatePreviewUrl } from '@sanity/visual-editing/next'
-import { draftMode } from 'next/headers'
-import { redirect } from 'next/navigation'
-
-const token = process.env.SANITY_API_READ_TOKEN!
+import { draftMode } from "next/headers"
+import { redirect } from "next/navigation"
 
 export async function GET(request: Request) {
-  const { isValid, redirectTo = '/' } = await validatePreviewUrl(
-    token,
-    request.url
-  )
+  const { searchParams } = new URL(request.url)
+  const secret = searchParams.get("secret")
 
-  if (!isValid) {
-    return new Response('Invalid secret', { status: 401 })
+  if (secret !== process.env.SANITY_PREVIEW_SECRET) {
+    return new Response("Invalid secret", { status: 401 })
   }
 
   const { enable } = await draftMode()
   enable()
-  redirect(redirectTo)
+  redirect(searchParams.get("redirect") ?? "/")
 }

@@ -12,7 +12,12 @@ export default defineConfig({
   plugins: [
     structureTool(),
     presentationTool({
-      previewUrl: 'https://kraken-labs.vercel.app',
+      previewUrl: {
+        origin: 'https://kraken-labs.vercel.app',
+        draftMode: {
+          enable: '/api/draft',
+        },
+      },
     }),
   ],
   schema: { types: schemaTypes },
