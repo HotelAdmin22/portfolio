@@ -1,7 +1,7 @@
-import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './sanity/schemaTypes'
+import { defineConfig } from 'sanity'
+import { structureTool } from 'sanity/structure'
+import { presentationTool } from 'sanity/presentation'
+import { schemaTypes } from './sanity/schemaTypes'
 
 export default defineConfig({
   name: 'default',
@@ -9,8 +9,11 @@ export default defineConfig({
   studioHost: 'kraken-labs',
   projectId: 'r0k8uqze',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
-  plugins: [structureTool(), visionTool()],
-  schema: {
-    types: schemaTypes,
-  },
+  plugins: [
+    structureTool(),
+    presentationTool({
+      previewUrl: 'https://kraken-labs.vercel.app',
+    }),
+  ],
+  schema: { types: schemaTypes },
 })
