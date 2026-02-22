@@ -1,10 +1,14 @@
-"use client"
+import { draftMode } from "next/headers"
+import DesignerPortfolio from "@/components/DesignerPortfolio"
+import { getPortfolioItems, getSiteSettings } from "@/sanity/lib/queries"
 
-import { NextStudio } from "next-sanity/studio"
-import config from "@/sanity.config"
+export default async function Page() {
+  const { isEnabled } = await draftMode()
 
-export const dynamic = "force-dynamic"
+  const [data, settings] = await Promise.all([
+    getPortfolioItems(isEnabled),
+    getSiteSettings(isEnabled),
+  ])
 
-export default function StudioPage() {
-  return <NextStudio config={config} />
+  return <DesignerPortfolio data={data} settings={settings} />
 }
