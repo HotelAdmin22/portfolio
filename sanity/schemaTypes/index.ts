@@ -1,7 +1,4 @@
 import { portfolioProject } from './portfolioProject'
+import { siteSettings } from './siteSettings'
 
-export const schemaTypes = [portfolioProject]
-
-export const schema = {
-  types: schemaTypes,
-}
+export const schemaTypes = [portfolioProject, siteSettings]
