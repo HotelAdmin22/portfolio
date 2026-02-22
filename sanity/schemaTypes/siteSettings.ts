@@ -5,7 +5,6 @@ export const siteSettings = defineType({
   name: "siteSettings",
   title: "Site Settings",
   type: "document",
-  // Singleton — only one document of this type should ever exist
   __experimental_actions: ["update", "publish"],
   fields: [
     // -------------------------------------------------------------------------
@@ -55,9 +54,9 @@ export const siteSettings = defineType({
     defineField({
       name: "whatWeDoBody",
       title: "About — What We Do Body",
-      type: "array",
-      of: [{ type: "block" }],
-      description: "Rich text — each block becomes a paragraph",
+      type: "text",
+      rows: 6,
+      description: "Plain text — each paragraph separated by a blank line",
     }),
     defineField({
       name: "whoIAmHeading",
@@ -67,8 +66,8 @@ export const siteSettings = defineType({
     defineField({
       name: "whoIAmBody",
       title: "About — Who I Am Body",
-      type: "array",
-      of: [{ type: "block" }],
+      type: "text",
+      rows: 6,
     }),
     defineField({
       name: "headshot",
