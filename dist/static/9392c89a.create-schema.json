@@ -1,0 +1,132 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Industrial & Aerospace",
+              "value": "industrial"
+            },
+            {
+              "title": "Medical Visualization",
+              "value": "technical"
+            },
+            {
+              "title": "Creative Industries",
+              "value": "brandingIndustrial"
+            }
+          ]
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "industrial",
+                  "technical",
+                  "brandingIndustrial"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "section",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "category",
+        "type": "string",
+        "title": "Category Label"
+      },
+      {
+        "rows": 4,
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "tools",
+        "type": "array"
+      },
+      {
+        "initialValue": 0,
+        "name": "order",
+        "type": "number"
+      },
+      {
+        "name": "videoKey",
+        "type": "string",
+        "title": "Video Key (optional)"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "thumbnailImage",
+        "type": "image"
+      },
+      {
+        "of": [
+          {
+            "options": {
+              "hotspot": true
+            },
+            "type": "image"
+          }
+        ],
+        "name": "galleryImages",
+        "type": "array"
+      }
+    ],
+    "name": "portfolioProject",
+    "type": "document"
+  }
+]
