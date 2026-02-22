@@ -15,7 +15,7 @@ export default defineConfig({
   previewUrl: {
     origin: 'https://kraken-labs.vercel.app',
     draftMode: {
-      enable: '/api/draft?secret=mysecrettoken123',
+      enable: '/api/draft?secret=kraken-preview-2026',
     },
   },
 }),
