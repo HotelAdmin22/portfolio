@@ -28,7 +28,7 @@ type SanityProject = {
   category: string
   description: string
   tools: string[]
-  videoKey?: string      // Vimeo ID or full URL stored in Sanity
+  videoKey?: string      // Vimeo/YouTube ID or full URL stored in Sanity
   thumbnailUrl?: string
   galleryUrls?: string[]
 }
@@ -36,11 +36,15 @@ type SanityProject = {
 // ---------------------------------------------------------------------------
 // Helper: turn a videoKey into the full Vimeo page URL the component expects
 // ---------------------------------------------------------------------------
-function toVimeoUrl(key?: string): string {
+function toVideoUrl(key?: string): string {
   if (!key) return ""
-  if (/^https?:\/\//i.test(key)) return key
-  if (/^\d+$/.test(key.trim())) return `https://vimeo.com/${key.trim()}`
-  return key
+  const value = key.trim()
+  // Full Vimeo / YouTube URL — pass straight through.
+  if (/^https?:\/\//i.test(value)) return value
+  // Bare numeric id => Vimeo, bare 11-char id => YouTube.
+  if (/^\d+$/.test(value)) return `https://vimeo.com/${value}`
+  if (/^[A-Za-z0-9_-]{11}$/.test(value)) return `https://www.youtube.com/watch?v=${value}`
+  return value
 }
 
 // ---------------------------------------------------------------------------
@@ -69,10 +73,11 @@ export async function getPortfolioItems(
       const section = project.section ?? "industrial"
       if (!grouped[section]) grouped[section] = []
 
-      const vimeoUrl = toVimeoUrl(project.videoKey)
-      const src = project.thumbnailUrl ?? vimeoUrl
+      const videoUrl = toVideoUrl(project.videoKey)
+      // `src` is the square card thumbnail; `images[0]` becomes the modal hero.
+      const src = project.thumbnailUrl ?? videoUrl
       const images: string[] = [
-        ...(vimeoUrl ? [vimeoUrl] : []),
+        ...(videoUrl ? [videoUrl] : []),
         ...(project.galleryUrls ?? []),
       ]
 
@@ -94,18 +99,22 @@ export async function getPortfolioItems(
   }
 }
 
+// NOTE: the two About image slots were repurposed (see the siteSettings schema).
+// `headshot` now holds the company logo and `cherryPhoto` holds Genesis' headshot —
+// the field *names* stay put so the already-uploaded assets are not lost.
 export const siteSettingsQuery = `
   *[_type == "siteSettings"][0] {
     heroHeadingLine1,
     heroHeadingLine2,
     heroSubtitle,
     heroVideoId,
+    aboutHeading,
     whatWeDoHeading,
     whatWeDoBody,
     whoIAmHeading,
     whoIAmBody,
-    "headshotUrl": headshot.asset->url,
-    "cherryPhotoUrl": cherryPhoto.asset->url,
+    "aboutLogoUrl": headshot.asset->url,
+    "aboutHeadshotUrl": cherryPhoto.asset->url,
     contactHeading,
     contactSubtitle,
     emailAddress,
@@ -123,12 +132,13 @@ export type SiteSettings = {
   heroHeadingLine2?: string
   heroSubtitle?: string
   heroVideoId?: string
+  aboutHeading?: string
   whatWeDoHeading?: string
   whatWeDoBody?: string
   whoIAmHeading?: string
   whoIAmBody?: string
-  headshotUrl?: string
-  cherryPhotoUrl?: string
+  aboutLogoUrl?: string
+  aboutHeadshotUrl?: string
   contactHeading?: string
   contactSubtitle?: string
   emailAddress?: string

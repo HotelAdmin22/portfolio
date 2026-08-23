@@ -172,3 +172,33 @@
     padding-right: 20px;
   }
 }
+
+/* Anchor targets clear the sticky header */
+html {
+  scroll-behavior: smooth;
+}
+
+#portfolio,
+#about,
+#contact {
+  scroll-margin-top: 6.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Slim scrollbar for the horizontal project rows (Firefox) */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(156 163 175) transparent;
+}

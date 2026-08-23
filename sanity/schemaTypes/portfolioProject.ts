@@ -54,8 +54,10 @@ export const portfolioProject = defineType({
 
     defineField({
       name: "videoKey",
-      title: "Video Key (optional)",
+      title: "Video (optional)",
       type: "string",
+      description:
+        "Vimeo or YouTube link (or a bare Vimeo/YouTube ID). When set, the video plays first inside the project.",
     }),
 
     defineField({
@@ -63,6 +65,8 @@ export const portfolioProject = defineType({
       title: "Thumbnail Image",
       type: "image",
       options: { hotspot: true },
+      description:
+        "Card image only — it is cropped to a square, so pick something that reads well square. Keep uploads under ~2 MB (2000px is plenty).",
     }),
 
     defineField({
@@ -70,6 +74,12 @@ export const portfolioProject = defineType({
       title: "Gallery Images",
       type: "array",
       of: [{ type: "image", options: { hotspot: true } }],
+      description:
+        "The FIRST image here is the large main image shown when the project is opened. Drag to reorder. Keep each upload under ~2 MB.",
     }),
   ],
+
+  preview: {
+    select: { title: "title", subtitle: "category", media: "thumbnailImage" },
+  },
 })

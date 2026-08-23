@@ -32,9 +32,10 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: "heroVideoId",
-      title: "Hero — Background Vimeo ID",
+      title: "Hero — Background Video",
       type: "string",
-      description: "Bare Vimeo ID for the fullscreen background video",
+      description:
+        "Vimeo or YouTube link (or a bare Vimeo/YouTube ID) for the fullscreen background video",
     }),
 
     // -------------------------------------------------------------------------
@@ -68,16 +69,23 @@ export const siteSettings = defineType({
       title: "About — Who I Am Body",
       type: "text",
       rows: 6,
+      description: "Plain text — separate paragraphs with a blank line",
     }),
     defineField({
+      // Field name kept as "headshot" so the asset already uploaded here is preserved.
       name: "headshot",
-      title: "About — Headshot (Genesis)",
+      title: "About — Company Logo",
+      description:
+        "Shown beside \"What We Do\". Transparent PNG works best. Keep uploads under ~2 MB.",
       type: "image",
       options: { hotspot: true },
     }),
     defineField({
+      // Field name kept as "cherryPhoto" so the asset already uploaded here is preserved.
       name: "cherryPhoto",
-      title: "About — Cherry Photo",
+      title: "About — Headshot (Genesis)",
+      description:
+        "Shown beside \"Who I Am\". Square crops look best. Keep uploads under ~2 MB.",
       type: "image",
       options: { hotspot: true },
     }),
@@ -129,7 +137,13 @@ export const siteSettings = defineType({
           type: "object",
           fields: [
             defineField({ name: "alt", title: "Organization Name", type: "string" }),
-            defineField({ name: "logo", title: "Logo Image", type: "image", options: { hotspot: true } }),
+            defineField({
+              name: "logo",
+              title: "Logo Image",
+              type: "image",
+              options: { hotspot: true },
+              description: "Transparent PNG or SVG. Keep uploads under ~500 KB.",
+            }),
           ],
           preview: {
             select: { title: "alt", media: "logo" },

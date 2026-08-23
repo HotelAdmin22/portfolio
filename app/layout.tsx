@@ -7,11 +7,17 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: "Kraken Labs — Technical Visualization & 3D Rendering",
+  description:
+    "Kraken Labs is the studio of Genesis Laboy: high-fidelity technical visualization, product rendering, and immersive experiences for aerospace, industrial, and medical clients.",
   icons: {
-    icon: '/icon.svg',
+    icon: "/icon.svg",
+  },
+  openGraph: {
+    title: "Kraken Labs — Technical Visualization & 3D Rendering",
+    description:
+      "High-fidelity technical visualization, product rendering, and immersive experiences for aerospace, industrial, and medical clients.",
+    type: "website",
   },
 }
 
